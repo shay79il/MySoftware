@@ -7,9 +7,10 @@ node {
         sh "git log"
     }
     stage("3. Print a message to the console from the JenkinsFile itself.") {
-            sh "echo Hello World"
+        sh "echo Hello World"
     }
     stage("4. Run a file/script of your choice which will in turn print a message to the console.") {
-            sh "./printHello.sh"
+        sh "chmod +x printHello.sh"
+        sh "./printHello.sh"
     }
 }
