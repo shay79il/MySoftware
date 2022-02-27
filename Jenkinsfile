@@ -1,4 +1,3 @@
-properties([[$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([pollSCM('30 * * * *  ')])])
 node {
     stage("1. Clone a repository of your choice") {
         git branch: 'main', url: 'https://github.com/shay79il/UseOfJenkinsfile.git'
