@@ -1,7 +1,32 @@
-import os
+from os import getenv
+from flask import Flask, request, render_template
 
-REGION = os.getenv('REGION', 'us-west-1')
-ENV_NAME = os.getenv('ENV_NAME', 'PRODUCTION')
+REGION = getenv('REGION', 'us-west-1')
+ENV_NAME = getenv('ENV_NAME', 'PRODUCTION')
 
-print(f"REGION: {REGION}")
-print(f"ENV_NAME: {ENV_NAME}")
+app = Flask("myApp")
+
+
+@app.route('/', methods=['GET'])
+def score_server():
+    if request.method == 'GET':
+        return f"""
+          <html>
+          <head>
+              <title>{ENV_NAME}</title>
+          </head>
+          <body>
+            <h1>The ENV_NAME is {ENV_NAME} </h1>
+            <h2>The REGION is {REGION} </h2>
+          </body>
+          </html>
+          """
+
+
+# @app.route('/')
+# def index():
+#     html_addition = get_users_scores_html()
+#     return render_template('index.html', SCORE=html_addition)
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=80, debug=True)
