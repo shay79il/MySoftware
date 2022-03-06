@@ -23,23 +23,23 @@ pipeline {
         success {
             echo "${env.BUILD_URL}"
             echo "======= SUCCESS =======\n======= SUCCESS =======\n======= SUCCESS =======\n"
-            stage ('(1) Push image to dockerHub') {
-                steps {
+//             stage ('(1) Push image to dockerHub') {
+//                 steps {
                     sh 'docker push shay79il/python-app'
-                }
-            }
-            stage ('(2) Git clone Helm chart') {
-                steps {
+//                 }
+//             }
+//             stage ('(2) Git clone Helm chart') {
+//                 steps {
                     git branch: 'main', url: 'https://github.com/shay79il/my-helm-chart.git'
-                }
-            }
-            stage ('(3) Deploy my Helm Chart') {
-                steps {
+//                 }
+//             }
+//             stage ('(3) Deploy my Helm Chart') {
+//                 steps {
                     sh 'helm upgrade --install mychart ./my-helm-chart --namespace staging \
                     --set myApp.REGION=${REGION} \
                     --set myAPP.ENV_NAME=${ENV_NAME}'
-                }
-            }
+//                 }
+//             }
         }
         failure {
             echo "${env.BUILD_URL}"
