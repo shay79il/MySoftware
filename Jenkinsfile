@@ -35,7 +35,7 @@ pipeline {
 //             }
 //             stage ('(3) Deploy my Helm Chart') {
 //                 steps {
-                    sh 'kubectl apply -f satging-ns.yml'
+                    sh 'kubectl apply -f ./my-helm-chart/templates/staging-ns.yml'
                     sh 'helm upgrade --install mychart ./my-helm-chart --namespace staging \
                     --set myApp.REGION=${REGION} \
                     --set myAPP.ENV_NAME=${ENV_NAME}'
