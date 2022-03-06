@@ -23,10 +23,5 @@ def score_server():
           """
 
 
-# @app.route('/')
-# def index():
-#     html_addition = get_users_scores_html()
-#     return render_template('index.html', SCORE=html_addition)
-
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=80, debug=True)
