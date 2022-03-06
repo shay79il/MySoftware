@@ -30,7 +30,7 @@ pipeline {
 //             }
 //             stage ('(2) Git clone Helm chart') {
 //                 steps {
-                    git branch: 'main', url: 'https://github.com/shay79il/my-helm-chart.git'
+//                     git branch: 'main', url: 'https://github.com/shay79il/my-helm-chart.git'
 //                 }
 //             }
 //             stage ('(3) Deploy my Helm Chart') {
