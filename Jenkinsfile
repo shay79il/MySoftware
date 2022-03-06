@@ -35,7 +35,7 @@ pipeline {
 //             }
 //             stage ('(3) Deploy my Helm Chart') {
 //                 steps {
-                    sh 'helm upgrade --install mychart ./my-helm-chart --namespace staging \
+                    sh 'helm upgrade --install mychart ./my-helm-chart --create-namespace staging \
                     --set myApp.REGION=${REGION} \
                     --set myAPP.ENV_NAME=${ENV_NAME}'
 //                 }
