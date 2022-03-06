@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-nginx-cm
+  namespace: {{ .Release.Namespace }}
+data:
+  nginx.config: |-
+    add-headers: ""
+    allow-backend-server-header: "false"
+    allow-snippet-annotations: TRUE
+    annotation-value-word-blocklist: ""
+    hide-headers: empty
+    access-log-params: ""
+    access-log-path: "/var/log/nginx/access.log"
+    http-access-log-path: ""
+    stream-access-log-path: ""
+    enable-access-log-for-default-backend: "false"
+    error-log-path: "/var/log/nginx/error.log"
+    enable-modsecurity: "false"
+    modsecurity-snippet: ""
+    enable-owasp-modsecurity-crs: "false"
+    client-header-buffer-size: "1k"
+    client-header-timeout: 60
+    client-body-buffer-size: "8k"
+    client-body-timeout: 60
+    disable-access-log: FALSE
+    disable-ipv6: FALSE
+    disable-ipv6-dns: FALSE
+    enable-underscores-in-headers: FALSE
+    enable-ocsp: FALSE
+    ignore-invalid-headers: TRUE
+    retry-non-idempotent: "false"
+    error-log-level: "notice"
+    http2-max-field-size: "4k"
+    http2-max-header-size: "16k"
+    http2-max-requests: 1000
+    http2-max-concurrent-streams: 128
+    hsts: "true"
+    hsts-include-subdomains: "true"
+    hsts-max-age: "15724800"
+    hsts-preload: "false"
+    keep-alive: 75
+    keep-alive-requests: 100
+    large-client-header-buffers: "4 8k"
+    log-format-escape-json: "false"

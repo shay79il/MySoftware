@@ -1,0 +1,39 @@
+# For Helm 3
+apiVersion: v2
+
+# Chart version
+# follow Semantic Versioning
+# (https://semver.org/)
+Version: 0.1.0
+
+# My app version
+appVersion: "1.0.0"
+
+# My chart name
+name: mychart
+description: A Helm chart for Kubernetes
+
+# Chart type : application / library
+type: application
+
+# Add any dependencies
+#dependencies:
+#  - condition: TBD
+#    name: TNB
+#    repository: TBD
+#    version: TBD
+
+# Add any keywords
+# Used for searchzzzzz in public charts
+#keywords:
+#  - TBD1
+#  - TBD2
+#  - TBD3
+
+maintainers:
+  - email: shay79il@gmail.com
+    name: Shay
+
+home: http://github/shay79il/mychart
+icon: https://helm.sh/img/helm.svg
+

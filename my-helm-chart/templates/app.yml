@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-app
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: shay79il/python-app
+        ports:
+        - containerPort: 80
+        env:
+          - name: REGION
+            value: {{ .Values.myApp.REGION }}
+          - name: ENV_NAME
+            value: {{ .Values.myApp.ENV_NAME }}
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: nginx-port
+          initialDelaySeconds: 15
+          periodSeconds: 20
