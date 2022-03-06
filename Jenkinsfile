@@ -38,7 +38,7 @@ pipeline {
                     sh 'kubectl apply -f ./staging-ns.yml'
                     sh 'helm upgrade --install mychart ./my-helm-chart --namespace staging \
                     --set myApp.REGION=${REGION} \
-                    --set myAPP.ENV_NAME=${ENV_NAME}'
+                    --set myApp.ENV_NAME=${ENV_NAME}'
 //                 }
 //             }
         }

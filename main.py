@@ -1,14 +1,14 @@
 from os import getenv
 from flask import Flask, request, render_template
 
-REGION = getenv('REGION', 'us-west-1')
-ENV_NAME = getenv('ENV_NAME', 'PRODUCTION')
 
 app = Flask("myApp")
 
 
 @app.route('/', methods=['GET'])
 def score_server():
+    REGION = getenv('REGION', 'us-west-1')
+    ENV_NAME = getenv('ENV_NAME', 'PRODUCTION')
     if request.method == 'GET':
         return f"""
           <html>
