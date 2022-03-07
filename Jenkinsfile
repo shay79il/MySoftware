@@ -31,7 +31,7 @@ pipeline {
             sh 'kubectl apply -f ./staging-ns.yml'
 
             // stage ('(3) Add Helm Chart repo')
-            sh 'helm repo add shay79il-helm-repo https://shay79il.github.io/helm-chart/'
+            sh 'helm repo add myhelmrepo https://shay79il.github.io/helm-chart/'
 
             // stage ('(4) Deploy my Helm Chart')
             sh 'helm upgrade --install mychart myhelmrepo/home-assignment-1   --namespace staging \
