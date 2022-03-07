@@ -48,6 +48,9 @@ pipeline {
             // stage ('(3) Add Helm Chart repo')
             sh 'helm repo add myhelmrepo https://shay79il.github.io/helm-chart/'
 
+            // stage ('(4) Update Helm Chart repo')
+            sh 'helm repo update myhelmrepo'
+
 //             // Deploy helm based on the chosen variables and pass the values to the chart
 //             // If ENV_NAME == PRODUCTION && helm release exists -
 //             // run helm diff, print the output and wait for Approval input step -> If approved continue to deploy -> if declined quit
@@ -57,7 +60,7 @@ pipeline {
 //                     fi
 //             '''
 
-            // stage ('(4) Deploy my Helm Chart')
+            // stage ('(5) Deploy my Helm Chart')
             sh 'helm upgrade --install mychart myhelmrepo/home-assignment-1   --namespace staging \
                 --set myApp.REGION=${REGION} \
                 --set myApp.ENV_NAME=${ENV_NAME}'
