@@ -16,8 +16,6 @@ switch(ENV_NAME){
 return choices''']]]]), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
 
 
-
-
 pipeline {
     agent any
 
@@ -42,11 +40,22 @@ pipeline {
             // stage ('(1) Push image to dockerHub')
             sh 'docker push shay79il/python-app'
 
+            // sudo cp .kube/config ~jenkins/.kube/config
+            // sudo chown jenkins: ~jenkins/.kube/config
             // stage ('(2) apply new namespace')
             sh 'kubectl apply -f ./staging-ns.yml'
 
             // stage ('(3) Add Helm Chart repo')
             sh 'helm repo add myhelmrepo https://shay79il.github.io/helm-chart/'
+
+//             // Deploy helm based on the chosen variables and pass the values to the chart
+//             // If ENV_NAME == PRODUCTION && helm release exists -
+//             // run helm diff, print the output and wait for Approval input step -> If approved continue to deploy -> if declined quit
+//             sh '''#!/bin/bash
+//                     if [[ ${ENV} == "PRODUCTION" ]] && helm --namespace staging status mychart; then
+//                         helm --namespace staging diff mychart my-helm-chart/
+//                     fi
+//             '''
 
             // stage ('(4) Deploy my Helm Chart')
             sh 'helm upgrade --install mychart myhelmrepo/home-assignment-1   --namespace staging \
