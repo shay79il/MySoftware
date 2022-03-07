@@ -25,11 +25,6 @@ pipeline {
             echo "======= SUCCESS =======\n======= SUCCESS =======\n======= SUCCESS =======\n"
             sh 'docker push shay79il/python-app'
 
-//             stage ('(2) Git clone Helm chart') {
-//                 steps {
-//                     git branch: 'main', url: 'https://github.com/shay79il/my-helm-chart.git'
-//                 }
-//             }
 //             stage ('(3) Deploy my Helm Chart') {
 //                 steps {
                     sh 'kubectl apply -f ./staging-ns.yml'
