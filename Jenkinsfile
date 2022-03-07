@@ -13,7 +13,9 @@ switch(ENV_NAME){
         choices = [\'N/A\']
         break
 }
-return choices''']]], string(defaultValue: 'QA', name: 'ENV_NAME'), string(defaultValue: 'us-east-1', name: 'REGION')]), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
+return choices''']]],
+string(defaultValue: 'QA', name: 'ENV_NAME'),
+string(defaultValue: 'us-east-1', name: 'REGION')
 
 pipeline {
     agent any
