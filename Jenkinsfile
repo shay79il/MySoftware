@@ -1,4 +1,4 @@
-properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'ENV_NAME', randomName: 'choice-parameter-14426587830328', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'PRODUCTION\',\'PREPRODUCTION\',\'QA\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'DependentOption', randomName: 'choice-parameter-14428706280867', referencedParameters: 'ENV_NAME', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return [\'Option error\']'], script: [classpath: [], sandbox: false, script: '''def choices
+properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'ENV_NAME', randomName: 'choice-parameter-17985252157967', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'PRODUCTION\',\'PREPRODUCTION\',\'QA\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'REGION', randomName: 'choice-parameter-17985254323866', referencedParameters: 'ENV_NAME', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return [\'Option error\']'], script: [classpath: [], sandbox: false, script: '''def choices
 switch(ENV_NAME){
     case \'PRODUCTION\':
         choices = [\'us-west-1\', \'eu-central-2\', \'ap-south-1\']
@@ -13,7 +13,7 @@ switch(ENV_NAME){
         choices = [\'N/A\']
         break
 }
-return choices''']]]]), [$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([githubPush()])])
+return choices''']]]]), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
 
 pipeline {
     agent any
