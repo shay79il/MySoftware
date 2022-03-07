@@ -23,11 +23,8 @@ pipeline {
         success {
             echo "${env.BUILD_URL}"
             echo "======= SUCCESS =======\n======= SUCCESS =======\n======= SUCCESS =======\n"
-//             stage ('(1) Push image to dockerHub') {
-//                 steps {
-                    sh 'docker push shay79il/python-app'
-//                 }
-//             }
+            sh 'docker push shay79il/python-app'
+
 //             stage ('(2) Git clone Helm chart') {
 //                 steps {
 //                     git branch: 'main', url: 'https://github.com/shay79il/my-helm-chart.git'
