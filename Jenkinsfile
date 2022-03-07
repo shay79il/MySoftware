@@ -23,16 +23,20 @@ pipeline {
         success {
             echo "${env.BUILD_URL}"
             echo "======= SUCCESS =======\n======= SUCCESS =======\n======= SUCCESS =======\n"
+
+            // stage ('(1) Push image to dockerHub')
             sh 'docker push shay79il/python-app'
 
-//             stage ('(3) Deploy my Helm Chart') {
-//                 steps {
-                    sh 'kubectl apply -f ./staging-ns.yml'
-                    sh 'helm upgrade --install mychart ./my-helm-chart --namespace staging \
-                    --set myApp.REGION=${REGION} \
-                    --set myApp.ENV_NAME=${ENV_NAME}'
-//                 }
-//             }
+            // stage ('(2) apply new namespace')
+            sh 'kubectl apply -f ./staging-ns.yml'
+
+            // stage ('(3) Add Helm Chart repo')
+            sh 'helm repo add shay79il-helm-repo https://shay79il.github.io/helm-chart/'
+
+            // stage ('(4) Deploy my Helm Chart')
+            sh 'helm upgrade --install mychart myhelmrepo/home-assignment-1   --namespace staging \
+                --set myApp.REGION=${REGION} \
+                --set myApp.ENV_NAME=${ENV_NAME}'
         }
         failure {
             echo "${env.BUILD_URL}"
