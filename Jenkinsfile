@@ -1,7 +1,7 @@
 properties([parameters([[$class: 'ChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'ENV_NAME', randomName: 'choice-parameter-14426587830328', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return [\'PRODUCTION\',\'PREPRODUCTION\',\'QA\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'DependentOption', randomName: 'choice-parameter-14428706280867', referencedParameters: 'ENV_NAME', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: 'return [\'Option error\']'], script: [classpath: [], sandbox: false, script: '''def choices
 switch(ENV_NAME){
     case \'PRODUCTION\':
-        choices = [\'us-west-\', \'eu-central-2\', \'ap-south-1\']
+        choices = [\'us-west-1\', \'eu-central-2\', \'ap-south-1\']
         break
     case \'PREPRODUCTION\':
         choices = [\'us-east-2\', \'eu-west-3\']
@@ -24,7 +24,7 @@ pipeline {
 //     }
 
     stages {
-        stage ('(1) Git checkout') {
+        stage ('(1) Git clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/shay79il/UseOfJenkinsfile/'
             }
