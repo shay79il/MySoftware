@@ -18,11 +18,6 @@ return choices''']]]]), [$class: 'JobLocalConfiguration', changeReasonComment: '
 pipeline {
     agent any
 
-//     environment {
-//         REGION = 'eu-west-1'
-//         ENV_NAME = 'PROD'
-//     }
-
     stages {
         stage ('(1) Git clone') {
             steps {
